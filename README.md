@@ -1,4 +1,4 @@
-`photile` - A ruby gem/library to chop a photo into tiles, watermark them, etc.
+# photile *A ruby gem/library to chop a photo into tiles, watermark them, etc*
 
 * * *
 
