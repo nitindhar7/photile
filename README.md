@@ -1,7 +1,6 @@
 # photile
-
+* * *
 *A ruby gem/library to chop a photo into tiles, watermark them, etc*
-
 * * *
 
 `photile` can be used to power a web widget like [turnandzoom](https://github.com/nitindhar7/turnandzoom) or just about any simple image processing workflow. With `photile` you can run simple tasks like compression, watermarking and tiling images manually or in an automated fashion. These tasks can be combined to formulate a custom flow. For example, you can `compress an image` -> `watermark it` -> `break it up into tiles`.
