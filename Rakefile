@@ -21,3 +21,8 @@ desc "Uninstalls the gem"
 task :uninstall do
   system 'gem uninstall photile'
 end
+
+desc "Cleans generated files"
+task :clean do
+  `rm tmp/test*.jpeg 2>&1`
+end
