@@ -1,8 +1,23 @@
-$:.unshift "#{File.dirname(__FILE__)}/rakelib"
+require 'rake/testtask'
 
-require "rubygems"
-require "photile.rb"
+Rake::TestTask.new do |t|
+  t.libs << 'test'
+end
 
-task :default do
-  puts `rake -T`
+desc "Run unit tests"
+task :default => :test
+
+desc "Build photile for testing"
+task :build do
+  system 'gem build photile.gemspec && gem install ./*.gem --pre && rm *.gem'
+end
+
+desc "Build docs"
+task :docs do
+  `rdoc`
+end
+
+desc "Uninstalls the gem"
+task :uninstall do
+  system 'gem uninstall photile'
 end

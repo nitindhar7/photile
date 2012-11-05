@@ -47,6 +47,11 @@ $ photile -watermark -tile WIDTHxHEIGHT image-in image-watermark image-out
 $ photile -quality 80 -compress -watermark -tile WIDTHxHEIGHT image-in image-watermark [image-out-0...image-out-n]
 ```
 
+### Dependencies
+
+* **Imagemagick** - Follow the installation instructions [here](http://imagemagick.org) (on Linux you can install it using: `sudo apt-get install imagemagick imagemagick-common`).
+* **Jpegtran** - Follow the installation instructions [here](http://jpegclub.org/jpegtran) (on Linux you can install it using: `sudo apt-get install libjpeg-turbo-progs`).
+
 ### More
 
 Photile uses the amazing [Imagemagick](http://www.imagemagick.org/script/index.php) and [Jpegtran](http://jpegclub.org/jpegtran/) libraries. Imagemagick provides quality, watermarking and tiling properties. Jpegtran provides the loss-less compression. In other words, `photile` is just a layer on top of existing libraries to make certain image processing tasks dead simple. Additionally since `photile` is a gem it can be used directly in Rails to create dynamic workflows.

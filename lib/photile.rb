@@ -1,7 +1,4 @@
-# convert infile quality 70 - | composite -gravity center /path/to/watermark/image - outfile
-# composite -gravity center /path/to/watermark/image infile outfile
-# convert infile -crop 405x405 +repage +adjoin -quality 70 outfile_%02d
-
+=begin
 namespace :image do
 
   desc "Displays the size of an image"
@@ -45,4 +42,22 @@ namespace :image do
   end
 
 end
+=end
+# The main Photile driver
+class Photile
 
+  # Say hi to the world!
+  #
+  # Example:
+  #   >> Photile.hi("spanish")
+  #   => hola mundo
+  #
+  # Arguments:
+  #   language: (String)
+  def self.hi(language = "english")
+    translator = Translator.new(language)
+    puts translator.hi
+  end
+end
+
+require 'photile/translator'
