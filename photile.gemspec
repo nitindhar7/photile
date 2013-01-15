@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   s.name                        = 'photile'
-  s.version                     = '0.1.0.pre'
+  s.version                     = `git describe`
   s.date                        = '2012-11-02'
-  s.summary                     = 'A ruby gem to chop a photo into tiles, watermark them, etc.'
+  s.summary                     = 'A ruby gem to compress a photo, chop it into tiles, watermark it, etc.'
   s.description                 = 'Photile is just a layer on top of Imagemagick and Jpegtran to make certain image processing tasks dead simple.'
   s.author                      = 'Nitin Dhar'
   s.email                       = 'nitindhar7@yahoo.com'
