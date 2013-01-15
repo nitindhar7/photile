@@ -15,7 +15,7 @@ end
 desc "Deploy gem to Rubygems repo"
 task :deploy do
   version = `git describe`
-  system "gem build photile.gemspec && gem push photile-#{version}.gem && rm *.gem"
+  `gem build photile.gemspec && gem push photile-#{version}.gem && rm *.gem`
 end
 
 desc "Build docs"
