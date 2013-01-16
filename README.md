@@ -1,4 +1,4 @@
-# photile**
+# photile
 
 * * *
 *A ruby gem/library to chop a photo into tiles, watermark them, etc*
@@ -8,27 +8,28 @@
 
 One scenario where this is really useful is image processing for product images. Most product images are shot on white background, which means that there is a big opportunity to reduce image size and improve rendering speed on the web page. Here's what you can do with `photile`: `basic quality reduction` → `watermark your product images` → `break it up into tiles (certain tiles will be all white)` → `compress individual tiles`.
 
-### Functions
+### Installation & Dependencies
 
-* Quality manipulation
-* Loss-less compression
-* Watermarking
-* Tiling
+* **Imagemagick** - Follow the installation instructions [here](http://imagemagick.org) (on Linux you can install it using: `sudo apt-get install imagemagick imagemagick-common`).
+* **Jpegtran** - Follow the installation instructions [here](http://jpegclub.org/jpegtran) (on Linux you can install it using: `sudo apt-get install libjpeg-turbo-progs`).
 
-### Piping
-
-The four main functions of `photile` can be used in all combinations possible because of their 'piping' properties (i.e., the Builder Pattern). Each function takes in an image and spits out an image or an array of images. When an array of images is returned any function thereafter is applied to all items in the array. When piping functions the order is relevant as the output of a function becomes the input of another. For example: `tile` → `watermark` (tiles images and then applies a watermark to the smaller, chopped images) is not the same as `watermark` → `tile` (watermarks an image and then creates tiles).
-
-Here are the piping scenarios available
-
-* `IMAGE` → `Quality Modifier` → `IMAGE`
-* `IMAGE` → `Compressor` → `IMAGE`
-* `IMAGE` + `WATERMARK IMAGE`  → `Watermarker` → `IMAGE`
-* `IMAGE` → `Tiler` → `[IMAGE...IMAGE]`
+```bash
+# https://rubygems.org/gems/photile
+$ gem install photile
+```
 
 ### Examples
 
 ```bash
+# Usage
+$ photile
+Usage: photile [options] infile outfile
+    -q, --quality VALUE              Modify image quality
+    -c, --compress                   Loss-less compress image
+    -w, --watermark FILE             Watermark with given file
+    -t, --tile WIDTHxHEIGHT          Tile to the given dimensions
+    -h, --help                       Display options help
+
 # Basic Examples
 $ photile -quality 80 image-in image-out
 $ photile -compress image-in image-out
@@ -47,16 +48,27 @@ $ photile -watermark -tile WIDTHxHEIGHT image-in image-watermark image-out
 $ photile -quality 80 -compress -watermark -tile WIDTHxHEIGHT image-in image-watermark [image-out-0...image-out-n]
 ```
 
-### Dependencies
+### Features
 
-* **Imagemagick** - Follow the installation instructions [here](http://imagemagick.org) (on Linux you can install it using: `sudo apt-get install imagemagick imagemagick-common`).
-* **Jpegtran** - Follow the installation instructions [here](http://jpegclub.org/jpegtran) (on Linux you can install it using: `sudo apt-get install libjpeg-turbo-progs`).
+* Quality manipulation
+* Loss-less compression
+* Watermarking
+* Tiling
+
+### Piping
+
+The four main functions of `photile` can be used in all combinations possible because of their 'piping' properties (i.e., the Builder Pattern). Each function takes in an image and spits out an image or an array of images. When an array of images is returned any function thereafter is applied to all items in the array. When piping functions the order is relevant as the output of a function becomes the input of another. For example: `tile` → `watermark` (tiles images and then applies a watermark to the smaller, chopped images) is not the same as `watermark` → `tile` (watermarks an image and then creates tiles).
+
+Here are the piping scenarios available
+
+* `IMAGE` → `Quality Modifier` → `IMAGE`
+* `IMAGE` → `Compressor` → `IMAGE`
+* `IMAGE` + `WATERMARK IMAGE`  → `Watermarker` → `IMAGE`
+* `IMAGE` → `Tiler` → `[IMAGE...IMAGE]`
 
 ### More
 
 Photile uses the amazing [Imagemagick](http://www.imagemagick.org/script/index.php) and [Jpegtran](http://jpegclub.org/jpegtran/) libraries. Imagemagick provides quality, watermarking and tiling properties. Jpegtran provides the loss-less compression. In other words, `photile` is just a layer on top of existing libraries to make certain image processing tasks dead simple. Additionally since `photile` is a gem it can be used directly in Rails to create dynamic workflows.
 
-** `photile` is in a pre-release &alpha; state at the moment.
-
 * * *
-Copyright (c) 2012 Nitin Dhar. See [MIT-LICENSE](MIT-LICENSE) for details.
+Copyright (c) 2013 Nitin Dhar. See [MIT-LICENSE](MIT-LICENSE) for details.
