@@ -14,8 +14,8 @@ One scenario where this is really useful is image processing for product images.
 * **Jpegtran** - Follow the installation instructions [here](http://jpegclub.org/jpegtran) (on Linux you can install it using: `sudo apt-get install libjpeg-turbo-progs`).
 
 ```bash
-# https://rubygems.org/gems/photile
-$ gem install photile
+# https://rubygems.org/gems/gem
+$ photile install photile
 ```
 
 ### Examples
@@ -34,7 +34,7 @@ Usage: photile [options] infile outfile
 $ photile -quality 80 image-in image-out
 $ photile -compress image-in image-out
 $ photile -watermark image-in image-watermark image-out
-$ photile -tile WIDTHxHEIGHT image-in [image-out-0...image-out-n]
+$ photile -tile WIDTHxHEIGHT image-in image-out
 
 # Advanced Examples
 
@@ -45,7 +45,7 @@ $ photile -quality 80 -compress image-in image-out
 $ photile -watermark -tile WIDTHxHEIGHT image-in image-watermark image-out
 
 # 3. Reduce quality of 'image-in', then compress it and watermark it with 'image-watermark'. Finally, tile the watermarked image to produce '[image-out-0...image-out-n]'
-$ photile -quality 80 -compress -watermark -tile WIDTHxHEIGHT image-in image-watermark [image-out-0...image-out-n]
+$ photile -quality 80 -compress -watermark -tile WIDTHxHEIGHT image-in image-watermark image-out
 ```
 
 ### Features
@@ -68,7 +68,7 @@ Here are the piping scenarios available
 
 ### More
 
-Photile uses the amazing [Imagemagick](http://www.imagemagick.org/script/index.php) and [Jpegtran](http://jpegclub.org/jpegtran/) libraries. Imagemagick provides quality, watermarking and tiling properties. Jpegtran provides the loss-less compression. In other words, `photile` is just a layer on top of existing libraries to make certain image processing tasks dead simple. Additionally since `photile` is a gem it can be used directly in Rails to create dynamic workflows.
+Photile uses the amazing [Imagemagick](http://www.imagemagick.org/script/index.php) 6.6.9-7 and [Jpegtran](http://jpegclub.org/jpegtran/) 1.2.0 libraries. Imagemagick provides quality, watermarking and tiling properties. Jpegtran provides the loss-less compression. In other words, `photile` is just a layer on top of existing libraries to make certain image processing tasks dead simple. Additionally since `photile` is a gem it can be used directly in Rails to create dynamic workflows.
 
 * * *
 Copyright (c) 2013 Nitin Dhar. See [MIT-LICENSE](MIT-LICENSE) for details.

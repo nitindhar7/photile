@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.bindir                      = 'bin'
   s.license                     = 'MIT'
   s.homepage                    = 'https://github.com/nitindhar7/photile'
-  s.add_development_dependency  'rake', ['>= 0.9.2']
+  s.add_development_dependency  'rake', ['>= 0.8.7']
   s.required_ruby_version       = '>= 1.8.7'
   s.requirements                << 'imagemagick' << 'imagemagick-common' << 'libjpeg-turbo-progs'
 end
