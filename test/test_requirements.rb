@@ -1,7 +1,7 @@
 require 'test/unit'
 require 'photile'
 
-class PhotileTest < Test::Unit::TestCase
+class RequirementsTest < Test::Unit::TestCase
   def test_requirements
     assert_not_nil `which convert`
     assert_not_nil `which composite`

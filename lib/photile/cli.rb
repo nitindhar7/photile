@@ -24,8 +24,13 @@ class Photile::Cli
         options << {:tile => {:width => dim.first.to_i, :height => dim.last.to_i}}
       end
 
+      opts.on('-v', '--[no-]verbose', 'Run verbosely') do |value|
+        options << {:verbose => value}
+      end
+
       opts.on('-h', '--help', 'Display options help') do
         puts opts
+        puts 'photile requires the following libraries to be installed: imagemagick, imagemagick-common and libjpeg-turbo-progs'
         exit
       end
     end
@@ -35,12 +40,17 @@ class Photile::Cli
 
       if options.empty? || ARGV.size != 2
         puts optparse
+        puts 'photile requires the following libraries to be installed: imagemagick, imagemagick-common and libjpeg-turbo-progs'
         exit
       end
 
       {:options => options, :infile => ARGV.first, :outfile => ARGV.last}
     rescue OptionParser::InvalidArgument => ia
-      puts ia
+      puts 'Invalid argument'
+      puts optparse
+      exit
+    rescue OptionParser::InvalidOption => io
+      puts 'Invalid option'
       puts optparse
       exit
     end

@@ -30,5 +30,5 @@ end
 
 desc "Cleans generated files"
 task :clean do
-  `rm tmp/test*.jpeg 2>&1`
+  `rm tmp/test*.jpg 2>&1`
 end

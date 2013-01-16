@@ -1,6 +1,9 @@
+$:.push File.expand_path("../lib", __FILE__)
+require "photile"
+
 Gem::Specification.new do |s|
   s.name                        = 'photile'
-  s.version                     = `git describe`
+  s.version                     = Photile::VERSION
   s.date                        = Time.now.strftime("%Y-%m-%d")
   s.summary                     = 'A ruby gem to compress a photo, chop it into tiles, watermark it, etc.'
   s.description                 = 'Photile is just a layer on top of Imagemagick and Jpegtran to make certain image processing tasks dead simple.'
