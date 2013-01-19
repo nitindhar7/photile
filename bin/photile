@@ -4,16 +4,28 @@ require 'photile'
 
 config = Photile::Cli.parse
 
+verbose = false
 config[:options].each do |opt|
-  opt.each do |key,val|
+  opt.each {|key,val| verbose = val if key == :verbose }
+end
+
+puts '[photile] Processing...' if verbose
+
+config[:options].each_index do |index|
+  step = index+1
+  config[:options][index].each do |key,val|
     case key
     when :quality
+      puts "[photile] #{step}. #{config[:infile]} => quality #{val}% => #{config[:outfile]}" if verbose
       `convert #{config[:infile]} -quality #{val} #{config[:outfile]}`
     when :compress
+      puts "[photile] #{step}. #{config[:infile]} => compress => #{config[:outfile]}" if verbose
       `jpegtran -copy none -optimize -perfect -outfile #{config[:outfile]} #{config[:outfile]}`
     when :watermark
+      puts "[photile] #{step}. #{config[:infile]} => watermark #{val} => #{config[:outfile]}" if verbose
       `composite -gravity center #{val} #{config[:infile]} #{config[:outfile]}`
     when :tile
+      puts "[photile] #{step}. #{config[:infile]} => tile #{val[:width]}x#{val[:height]} => [#{config[:outfile]}, ...]" if verbose
       `convert #{config[:infile]} -crop #{val[:width]}x#{val[:height]} +repage +adjoin #{config[:outfile].split('.').join('%03d.')}`
     end
   end
