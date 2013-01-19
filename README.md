@@ -29,7 +29,7 @@ Usage: photile [options] infile outfile
 # Basic Examples
 $ photile --quality 80 image-in image-out
 $ photile --compress image-in image-out
-$ photile --watermark image-in image-watermark image-out
+$ photile --watermark image-watermark image-in image-out
 $ photile --tile WIDTHxHEIGHT image-in image-out
 
 # Advanced Examples
@@ -38,7 +38,7 @@ $ photile --tile WIDTHxHEIGHT image-in image-out
 $ photile --quality 80 --compress image-in image-out
 
 # 2. Watermark 'image-in' with 'image-watermark' and then tile it with size 'WIDTHxHEIGHT' to produce '[image-out-0...image-out-n]'
-$ photile --watermark --tile WIDTHxHEIGHT image-in image-watermark image-out
+$ photile --watermark image-watermark --tile WIDTHxHEIGHT image-in image-out
 
 # 3. Reduce quality % of 'image-in', then compress it and watermark it with 'image-watermark'. Finally, tile the watermarked image to produce '[image-out-0...image-out-n]'
 $ photile --quality QUALITY --compress --watermark image-watermark --tile WIDTHxHEIGHT image-in image-out
@@ -61,6 +61,7 @@ Photile uses the amazing [Imagemagick](http://www.imagemagick.org/script/index.p
 
 ### TODO
 
+- Documentation
 - CLI option to show version
 - File validation for infile/outfile
 - More unit tests to ensure that all pipe permutations work

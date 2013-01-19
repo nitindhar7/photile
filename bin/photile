@@ -10,12 +10,12 @@ config[:options].each do |opt|
     when :quality
       `convert #{config[:infile]} -quality #{val} #{config[:outfile]}`
     when :compress
-      `cp #{config[:infile]} #{config[:outfile]} && jpegtran -copy none -optimize -perfect -outfile #{config[:outfile]} #{config[:outfile]}`
+      `jpegtran -copy none -optimize -perfect -outfile #{config[:outfile]} #{config[:outfile]}`
     when :watermark
       `composite -gravity center #{val} #{config[:infile]} #{config[:outfile]}`
     when :tile
       `convert #{config[:infile]} -crop #{val[:width]}x#{val[:height]} +repage +adjoin #{config[:outfile].split('.').join('%03d.')}`
     end
-    config[:infile] = config[:outfile]
   end
+  config[:infile] = config[:outfile]
 end
