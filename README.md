@@ -55,7 +55,7 @@ Here are the piping scenarios available
 * Watermarking: `IMAGE` + `WATERMARK IMAGE`  → `Watermarker` → `IMAGE`
 * Tiling: `IMAGE` → `Tiler` → `[IMAGE...IMAGE]`
 
-### Moreoe
+### More
 
 Photile uses the amazing [Imagemagick](http://www.imagemagick.org/script/index.php) 6.6.9-7 and [Jpegtran](http://jpegclub.org/jpegtran/) 1.2.0 libraries. Imagemagick provides quality, watermarking and tiling properties. Jpegtran provides the loss-less compression. In other words, `photile` is just a layer on top of existing libraries to make certain image processing tasks dead simple. Additionally since `photile` is a gem it can be used directly in Rails to create dynamic workflows.
 
