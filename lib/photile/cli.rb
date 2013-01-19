@@ -8,6 +8,7 @@ class Photile::Cli
       opts.banner = "Usage: photile [options] infile outfile"
 
       opts.on('-q', '--quality VALUE', Integer, 'Modify image quality') do |value|
+        validate_percent_value('Quality', value)
         options << {:quality => value}
       end
 
@@ -16,6 +17,7 @@ class Photile::Cli
       end
 
       opts.on('-w', '--watermark FILE', String, 'Watermark with given file') do |file|
+        validate_file_exist file
         options << {:watermark => file}
       end
 
@@ -24,13 +26,13 @@ class Photile::Cli
         options << {:tile => {:width => dim.first.to_i, :height => dim.last.to_i}}
       end
 
-      opts.on('-v', '--[no-]verbose', 'Run verbosely') do |value|
+      opts.on('-v', '--verbose', 'Run verbosely') do |value|
         options << {:verbose => value}
       end
 
       opts.on('-h', '--help', 'Display options help') do
         puts opts
-        puts 'photile requires the following libraries to be installed: imagemagick, imagemagick-common and libjpeg-turbo-progs'
+        puts Photile::REQUIREMENTS
         exit
       end
     end
@@ -40,19 +42,33 @@ class Photile::Cli
 
       if options.empty? || ARGV.size != 2
         puts optparse
-        puts 'photile requires the following libraries to be installed: imagemagick, imagemagick-common and libjpeg-turbo-progs'
+        puts Photile::REQUIREMENTS
         exit
       end
 
+      validate_file_exist ARGV.first
+
       {:options => options, :infile => ARGV.first, :outfile => ARGV.last}
-    rescue OptionParser::InvalidArgument => ia
+    rescue OptionParser::InvalidArgument
       puts 'Invalid argument'
       puts optparse
       exit
-    rescue OptionParser::InvalidOption => io
+    rescue OptionParser::InvalidOption
       puts 'Invalid option'
       puts optparse
       exit
+    rescue Exception => e
+      puts e
+      puts optparse
+      exit
     end
+  end
+
+  def self.validate_percent_value(metric, value)
+    raise "Invalid percentage: #{metric} #{value}%. Acceptable range: 0-100" if value < 0 || value > 100
+  end
+
+  def self.validate_file_exist(file)
+    raise "File [#{file}] not found" if !FileTest.exists? file
   end
 end

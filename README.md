@@ -63,8 +63,10 @@ Photile uses the amazing [Imagemagick](http://www.imagemagick.org/script/index.p
 
 - Documentation
 - CLI option to show version
+- Use log4r for logging
 - File validation for infile/outfile
 - More unit tests to ensure that all pipe permutations work
+- Sign gem on deploy
 
 * * *
 Copyright (c) 2013 Nitin Dhar. See [MIT-LICENSE](MIT-LICENSE) for details.
