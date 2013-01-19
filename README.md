@@ -11,7 +11,7 @@ One scenario where this is really useful is image processing for product images.
 
 ```bash
 # https://rubygems.org/gems/gem
-$ photile install photile
+$ gem install photile
 ```
 
 ### Examples
