@@ -36,6 +36,11 @@ class Photile::Cli
         puts Photile::REQUIREMENTS
         exit
       end
+
+      opts.on_tail("--version", "Show version") do
+        puts "photile-#{Photile::VERSION}"
+        exit
+      end
     end
 
     begin
@@ -57,6 +62,8 @@ class Photile::Cli
     rescue OptionParser::InvalidOption
       puts 'Invalid option'
       puts optparse
+      exit
+    rescue exit
       exit
     rescue Exception => e
       puts e

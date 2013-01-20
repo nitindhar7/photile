@@ -24,7 +24,9 @@ Usage: photile [options] infile outfile
     -c, --compress                   Loss-less compress image
     -w, --watermark FILE             Watermark with given file
     -t, --tile WIDTHxHEIGHT          Tile to the given dimensions
+    -v, --verbose                    Run verbosely
     -h, --help                       Display options help
+        --version                    Show version
 
 # Basic Examples
 $ photile --quality 80 image-in image-out
@@ -62,11 +64,10 @@ Photile uses the amazing [Imagemagick](http://www.imagemagick.org/script/index.p
 ### TODO
 
 - Documentation
-- CLI option to show version
 - Use log4r for logging
-- File validation for infile/outfile
 - More unit tests to ensure that all pipe permutations work
 - Sign gem on deploy
+- Use from rake/ruby scripts and from rails
 
 * * *
 Copyright (c) 2013 Nitin Dhar. See [MIT-LICENSE](MIT-LICENSE) for details.
