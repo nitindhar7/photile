@@ -23,6 +23,7 @@ class Photile::Cli
 
       opts.on('-t', '--tile WIDTHxHEIGHT', Regexp.new(/\d+x\d+/), 'Tile to the given dimensions') do |dimensions|
         dim = dimensions.split('x')
+        validate_2d_dimensions dim
         options << {:tile => {:width => dim.first.to_i, :height => dim.last.to_i}}
       end
 
@@ -66,6 +67,10 @@ class Photile::Cli
 
   def self.validate_percent_value(metric, value)
     raise "Invalid percentage: #{metric} #{value}%. Acceptable range: 0-100" if value < 0 || value > 100
+  end
+
+  def self.validate_2d_dimensions(dims)
+    raise "Invalid dimensions: #{dims.first}x#{dims.last}. Acceptable dimensions are > 0" if dims.first <= 0 || dims.last <= 0
   end
 
   def self.validate_file_exist(file)
